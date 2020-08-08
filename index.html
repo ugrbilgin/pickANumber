@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="intro">Welcome to my first browser number guess game. <br>
+       You have to guess the number I picked. <br>
+       Be cautious you have only 5 attempt. <br>
+       <b> May the Lady Tymora be with you</b> </p>
+    <form >
+      <label >Your Guess:</label>
+      <input type="text" id="guess">
+      <button type="button" id="send"  onclick="Guess()">Submit</button>
+    </form>
+    <br> <br> <br>
+    <p id="mistakes"> </p>
+     <button type="submit"  onClick="refreshPage()">Play Again</button>
+    <script>
+      var number = Math.floor(Math.random() * 100) ;
+      var wrongGuesses = [];
+      var attempt=0;
+
+      /* var sendBtn = document.querySelector("#send")
+      sendBtn.onclick = function(){
+             var guess = document.getElementById("guess");
+             
+        let val = guess.value
+        console.log('val :>> ', val); */
+      function Guess(){
+        attempt+=1;
+        if(attempt> 5){
+          document.getElementById("send").style.display = "none";
+
+        }
+        var x = document.getElementById("guess").value;
+        if (x<number){
+         alert("your guess is low");
+         wrongGuesses[wrongGuesses.length]= x;
+        }
+        else if (x>number ){
+          alert("your guess is high");
+          wrongGuesses[wrongGuesses.length] = x;
+        }
+        else alert("Congratulations!!!");
+        document.getElementById("mistakes").innerHTML=wrongGuesses.toString();
+        
+        
+      }
+      function refreshPage() {
+          window.location.reload();
+        } 
+      
+    </script>
+      
+    </script>
+  </body>
+</html>
